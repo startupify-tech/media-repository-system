@@ -56,3 +56,7 @@ python manage.py runserver
 ```
 
 Now to login to admin interface visit http://localhost:8000/admin
+
+## *References*
+
+- [Getting started with Django](https://docs.djangoproject.com/en/3.0/intro/)
