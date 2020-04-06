@@ -10,15 +10,15 @@ This project is a media repository platform for partnered domain experts. Partne
 ## Project Structure
 
 ```
-[root]
-|_website/          - contains website related configs and environment settings/scripts
+[src]
+|_website/      - contains website related configs and environment settings/scripts
 |___ __init__.py
 |___settings.py
 |___urls.py
 |___asgi.py
 |___wsgi.py
 |
-|_media_repo/       - main server application for media repository
+|_core/         - main server application for media repository
 |___ __init__.py
 |___admin.py
 |___apps.py
@@ -28,7 +28,7 @@ This project is a media repository platform for partnered domain experts. Partne
 |______ ...
 |___tests.py
 |
-|_media_repo_demo/  - demo application for media repository
+|_demo/         - demo application for media repository
 |___ __init__.py
 |___admin.py
 |___apps.py
@@ -38,10 +38,10 @@ This project is a media repository platform for partnered domain experts. Partne
 |______partials/          - partial components
 |______base_layout.html   - basic page layout
 |
-|_media/            - protected storage for media loaded by domain expert
-|_static/           - static file storage
+|_media/        - protected storage for media loaded by domain expert
+|_static/       - static file storage
 |_manage.py
-|_db.sqlite3        - database file
+|_db.sqlite3    - database file
 ```
 
 ## Prerequisite installations
