@@ -2,7 +2,7 @@
 
 This project is a media repository platform for partnered domain experts. Partnered domain experts can prepare and upload videos through dedicated admin dashboard. Interested viewers can subscribe to the platform and can access content uploaded by domain experts.
 
-## Technologies stack:
+## Technologies stack
 - **Language:** Python
 - **Framework:** Django 
 - **Database:** SQLite
