@@ -4,7 +4,7 @@ This project is a media repository platform for partnered domain experts. Partne
 
 ## Technologies stack
 - **Language:** Python-v3
-- **Framework:** Django-v3
+- **Framework:** Django-v3 & Django REST
 - **Database:** SQLite-v3
 
 ## Project Structure
@@ -46,6 +46,7 @@ This project is a media repository platform for partnered domain experts. Partne
 
 ## Prerequisite installations
 - Python & Django
+- Rest framework (pip install djangorestframework)
 
 ## How to run
 
@@ -56,7 +57,12 @@ python manage.py runserver
 ```
 
 Now to login to admin interface visit http://localhost:8000/admin
+username : admin
+password : a1111111
 
 ## *References*
 
 - [Getting started with Django](https://docs.djangoproject.com/en/3.0/intro/)
+- [Build an API with Django](https://www.youtube.com/playlist?list=PLLRM7ROnmA9HzbIXYN6D3wOZ0wUrqNs_d)
+- [Managing files](https://docs.djangoproject.com/en/3.0/topics/files/)
+- [Writing a custom storage system](https://docs.djangoproject.com/en/3.0/howto/custom-file-storage/)
