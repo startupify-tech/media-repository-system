@@ -57,8 +57,8 @@ python manage.py runserver
 ```
 
 Now to login to admin interface visit http://localhost:8000/admin
-username : admin
-password : a1111111
+- username : admin
+- password : a1111111
 
 ## *References*
 
