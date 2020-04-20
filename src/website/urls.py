@@ -16,10 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from core.views import TestView
+from core.views import MediaView, TopicView, home_view, TopicMediaView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', home_view, name='home'),
     path('api-auth/', include('rest_framework.urls')),
-    path('', TestView.as_view(), name='test')
+    path('media/', MediaView.as_view(), name='media'),
+    path('media?topic', TopicMediaView.as_view(), name='media?topic'),
+    path('topic/', TopicView.as_view(), name='topic')
 ]

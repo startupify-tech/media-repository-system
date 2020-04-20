@@ -1,22 +1,6 @@
-import os
-import shutil
 from django.db import models
 from django.contrib.auth.models import User
 from .utility import get_file_path
-from django.db.models.signals import pre_delete
-from django.dispatch import receiver
-
-# from django.contrib.postgres.fields import ArrayField
-
-
-P = "PREMIUM"
-F = "FREE"
-
-TYPE_CHOICES = (
-    (P, "Premium"),
-    (F, "Free"),
-)
-NIL = "nil"
 
 
 # Create your models here.
@@ -41,12 +25,16 @@ class Media(models.Model):
     def __str__(self):
         return self.Title
 
-    def delete(self, *args, **kwargs):
-        self.File.delete()
-        super().delete(*args, **kwargs)
-
 
 class Subscriber(models.Model):
+    P = "PREMIUM"
+    F = "FREE"
+
+    TYPE_CHOICES = (
+        (P, "Premium"),
+        (F, "Free"),
+    )
+
     First = models.CharField(max_length=30, null=True)
     Last = models.CharField(max_length=30, null=True, blank=True)
     Email = models.EmailField()
@@ -56,15 +44,9 @@ class Subscriber(models.Model):
     Interest = models.ManyToManyField(Topic)
 
     def __str__(self):
-        return str(self.First+" "+self.Last)
+        return str(self.First + " " + self.Last)
 
 
 class Vote(models.Model):
     Voted_by = models.ForeignKey(Subscriber, on_delete=models.SET_NULL, null=True, blank=True)
     Voted_for = models.ForeignKey(Media, on_delete=models.SET_NULL, null=True, blank=True)
-
-
-@receiver(pre_delete, sender=Media)
-def remove_file(**kwargs):
-    instance = kwargs.get('instance')
-    instance.File.delete(save=False)
