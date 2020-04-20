@@ -28,17 +28,21 @@ This project is a media repository platform for partnered domain experts. Partne
 |______ ...
 |___tests.py
 |
-|_demo/         - demo application for media repository
+|_demo/         - demo application for media repository (Note:For now refer to core app. Will use demo later)
 |___ __init__.py
 |___admin.py
 |___apps.py
 |___views.py
-|___templates/      - HTML templates for views
+|___templates/      - HTML templates for views (Note: refer to template directory in src/)
 |______pages/             - main pages to be embedded in base layout
 |______partials/          - partial components
 |______base_layout.html   - basic page layout
 |
-|_media/        - protected storage for media loaded by domain expert
+|_templates/    - stores templates used for views
+|___home.html   - homepage layout
+|___base.html   - Basic page layout to be extended by all templates
+|
+|_media/        - protected storage for media loaded by domain expert (created automatically on upload)
 |_static/       - static file storage
 |_manage.py
 |_db.sqlite3    - database file
