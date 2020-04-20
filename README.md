@@ -57,6 +57,9 @@ This project is a media repository platform for partnered domain experts. Partne
 Execute following command in project's root directory to run locally
 
 ```shell
+py -m venv env
+pip install -r requirements.txt
+.\env\Scripts\activate
 python manage.py runserver
 ```
 
