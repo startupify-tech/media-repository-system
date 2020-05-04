@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from core.views import MediaView, TopicView, home_view, TopicMediaView
+from core.views import MediaView, TopicView, home_view, TopicMediaView, SubscriberMediaView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,5 +24,6 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('media/', MediaView.as_view(), name='media'),
     path('media?topic', TopicMediaView.as_view(), name='media?topic'),
-    path('topic/', TopicView.as_view(), name='topic')
+    path('topic/', TopicView.as_view(), name='topic'),
+    path('subscriber?media',SubscriberMediaView.as_view(),name='subscriber?media'),
 ]
