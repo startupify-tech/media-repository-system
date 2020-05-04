@@ -24,13 +24,19 @@ class TopicView(APIView):
 
 class TopicMediaView(APIView):
     def get(self, request, *args, **kwargs):
-        qs = Media.objects.filter(Topic=request.GET['id'])
+        if 'id' in request.GET:
+            qs = Media.objects.filter(Topic=request.GET['id'])
+        else:
+            qs = Media.objects.filter(Topic=1)
         serializer = MediaSerializer(qs, many=True)
         return Response(serializer.data)
 
 class SubscriberMediaView(APIView):
     def get(self,request,*args,**kwargs):
-        sub=Subscriber.objects.filter(id=request.GET['id'])
+        if 'id' in request.GET:
+            sub=Subscriber.objects.filter(id=request.GET['id'])
+        else:
+            sub=Subscriber.objects.filter(id=1)
         qs=Media.objects.none()
         for s in sub:
             t=s.Interest.all()
