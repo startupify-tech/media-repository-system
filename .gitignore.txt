@@ -2,7 +2,7 @@
 
 
 #media contents
-media/
+media/20/
 
 #misc files
 *.xml
