@@ -1,6 +1,6 @@
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import Media, Topic ,Subscriber
+from .models import Media, Topic, Subscriber
 from django.shortcuts import render
 
 from .serializers import MediaSerializer, TopicSerializer
@@ -10,17 +10,20 @@ from .serializers import MediaSerializer, TopicSerializer
 def home_view(request, *args, **kwargs):
     return render(request, "home.html", {})
 
+
 class MediaView(APIView):
     def get(self, request, *args, **kwargs):
         qs = Media.objects.all()
         serializer = MediaSerializer(qs, many=True)
         return Response(serializer.data)
 
+
 class TopicView(APIView):
     def get(self, request, *args, **kwargs):
         qs = Topic.objects.all()
         serializer = TopicSerializer(qs, many=True)
         return Response(serializer.data)
+
 
 class TopicMediaView(APIView):
     def get(self, request, *args, **kwargs):
@@ -31,17 +34,23 @@ class TopicMediaView(APIView):
         serializer = MediaSerializer(qs, many=True)
         return Response(serializer.data)
 
-class SubscriberMediaView(APIView):
-    def get(self,request,*args,**kwargs):
-        if 'id' in request.GET:
-            sub=Subscriber.objects.filter(id=request.GET['id'])
-        else:
-            sub=Subscriber.objects.filter(id=1)
-        qs=Media.objects.none()
-        for s in sub:
-            t=s.Interest.all()
-            for top in t:
-                qs|=Media.objects.filter(Topic=top)
-        serializer=MediaSerializer(qs, many=True)                 
-        return Response(serializer.data)
 
+class SubscriberMediaView(APIView):
+    def get(self, request, *args, **kwargs):
+        # if the user doesnot gives an id of the subscriber
+        # then the api gives default result for id=1
+        if 'id' in request.GET:
+            subscribers = Subscriber.objects.filter(id=request.GET['id'])
+        else:
+            subscribers = Subscriber.objects.filter(id=1)
+
+        qs = Media.objects.none()  # initializing  empty query set
+
+        # for each subscriber getting a list of topics they are interested in and then adding
+        # topic to the query set ( qs )
+        for s in subscribers:
+            topics_of_interest_of_subscriber = s.Interest.all()
+            for topic in topics_of_interest_of_subscriber:
+                qs |= Media.objects.filter(Topic=topic)
+        serializer = MediaSerializer(qs, many=True)
+        return Response(serializer.data)
