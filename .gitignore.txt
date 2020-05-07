@@ -3,6 +3,7 @@
 
 #media contents
 media/20/
+.idea/
 
 #misc files
 *.xml
