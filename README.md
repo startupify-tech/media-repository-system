@@ -70,6 +70,7 @@ Now to login to admin interface visit http://localhost:8000/admin
   - UPPERCASE <- for const and enums
 - Use meaningful names for naming any variable.
 - Any variable, constant or type name should not exceed 32 chars.
+- Use double underscore (`__`) as prefix for defining private functions and single underscore (`_`) for defining protected functions.
 
 **Code formatting**
 
