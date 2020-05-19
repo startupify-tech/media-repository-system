@@ -23,6 +23,9 @@ This project is a media repository platform for partnered domain experts. Partne
 |___admin.py
 |___apps.py
 |___models.py
+|___serializers.py
+|___urls.py
+|___utility.py
 |___migrations/
 |______ __init__.py
 |______ ...
