@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Media,Topic,Subscriber,Vote
+from .models import Media, Topic, Subscriber, Vote
 
 # Register your models here.
 

@@ -1,7 +1,5 @@
 import uuid
-import os
 import datetime
-from django.contrib.auth.models import User
 
 
 def get_file_path(instance, filename):

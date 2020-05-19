@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Media, Topic
+from .models import Media
 
 
 class MediaSerializer(serializers.ModelSerializer):
@@ -10,10 +10,4 @@ class MediaSerializer(serializers.ModelSerializer):
     topic_name = serializers.SerializerMethodField('get_topic_name')
 
     def get_topic_name(self, obj):
-        return obj.Topic.Name
-
-
-class TopicSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Topic
-        fields = '__all__'
+        return obj.topic.name

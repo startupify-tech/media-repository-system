@@ -6,24 +6,24 @@ from .utility import get_file_path
 # Create your models here.
 
 class Topic(models.Model):
-    Name = models.CharField(max_length=30, null=True)
+    name = models.CharField(max_length=30, null=True)
 
     def __str__(self):
-        return self.Name
+        return self.name
 
 
 class Media(models.Model):
-    Title = models.CharField(max_length=30, null=True)
-    Description = models.TextField(null=True)
-    File = models.FileField(upload_to=get_file_path, null=True, blank=True, max_length=255)
+    title = models.CharField(max_length=30, null=True)
+    description = models.TextField(null=True)
+    file = models.FileField(upload_to=get_file_path, null=True, blank=True, max_length=255)
 
-    Author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
-    Topic = models.ForeignKey(Topic, db_column="Name", on_delete=models.SET_NULL, null=True, blank=True)
+    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    topic = models.ForeignKey(Topic, db_column="name", on_delete=models.SET_NULL, null=True, blank=True)
 
-    Tags = models.TextField(null=True, blank=True)
+    tags = models.TextField(null=True, blank=True)
 
     def __str__(self):
-        return self.Title
+        return self.title
 
 
 class Subscriber(models.Model):
@@ -35,18 +35,18 @@ class Subscriber(models.Model):
         (F, "Free"),
     )
 
-    First = models.CharField(max_length=30, null=True)
-    Last = models.CharField(max_length=30, null=True, blank=True)
-    Email = models.EmailField()
-    Type = models.CharField(max_length=30,
+    first = models.CharField(max_length=30, null=True)
+    last = models.CharField(max_length=30, null=True, blank=True)
+    email = models.EmailField()
+    type = models.CharField(max_length=30,
                             choices=TYPE_CHOICES,
                             default=F)
-    Interest = models.ManyToManyField(Topic)
+    interested_topic = models.ManyToManyField(Topic)
 
     def __str__(self):
-        return str(self.First + " " + self.Last)
+        return str(self.first)
 
 
 class Vote(models.Model):
-    Voted_by = models.ForeignKey(Subscriber, on_delete=models.SET_NULL, null=True, blank=True)
-    Voted_for = models.ForeignKey(Media, on_delete=models.SET_NULL, null=True, blank=True)
+    voted_by = models.ForeignKey(Subscriber, on_delete=models.SET_NULL, null=True, blank=True)
+    voted_for = models.ForeignKey(Media, on_delete=models.SET_NULL, null=True, blank=True)
