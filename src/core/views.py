@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
 
-from .serializers import MediaSerializer
+from .serializers import MediaSerializer, TopicSerializer
 
 
 # Create your views here.
@@ -55,4 +55,10 @@ class MediaView(APIView):
         else:
             media = Media.objects.all()
         serializer = MediaSerializer(media, many=True)
+        return Response(serializer.data)
+
+class TopicView(APIView):
+    def get(self, request, *args, **kwargs):
+        qs = Topic.objects.all()
+        serializer = TopicSerializer(qs, many=True)
         return Response(serializer.data)
