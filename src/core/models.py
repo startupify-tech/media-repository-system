@@ -3,8 +3,6 @@ from django.contrib.auth.models import User
 from .utility import get_file_path
 
 
-# Create your models here.
-
 class Topic(models.Model):
     name = models.CharField(max_length=30, null=True)
 
