@@ -55,14 +55,26 @@ This project is a media repository platform for partnered domain experts. Partne
 - Python & Django
 - Rest framework (pip install djangorestframework)
 
-## How to run
+## How to install
 
-Execute following command in project's root directory to run locally
+Install and activate virtual environment
 
 ```shell
 py -m venv env
-pip install -r requirements.txt
 .\env\Scripts\activate
+```
+
+Install project dependencies
+
+```shell
+pip install -r requirements.txt
+```
+
+## How to run
+
+Execute following command in source directory (`cd src`) to run locally
+
+```shell
 python manage.py runserver
 ```
 
