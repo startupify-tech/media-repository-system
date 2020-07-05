@@ -23,4 +23,7 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('', include('core.urls')),
     path('', views.index, name='index'),
+    #path('',include('user.urls')),
+    path('accounts/', include('allauth.urls')),
+
 ]
