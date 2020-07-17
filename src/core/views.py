@@ -5,7 +5,6 @@ from rest_framework.views import APIView
 from .models import Media, Subscriber, Topic
 from .serializers import MediaSerializer, TopicSerializer
 
-
 class MediaView(APIView):
     def __get_media_by_topic(self, topic_id):
         topic = get_object_or_404(Topic, pk=topic_id)
@@ -37,3 +36,6 @@ class TopicView(APIView):
         topics = Topic.objects.all()
         serializer = TopicSerializer(topics, many=True)
         return Response(serializer.data)
+
+
+

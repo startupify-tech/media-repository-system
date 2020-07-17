@@ -33,16 +33,17 @@ class Subscriber(models.Model):
         (F, "Free"),
     )
 
-    first = models.CharField(max_length=30, null=True)
+    first = models.CharField(max_length=30,null=False)
     last = models.CharField(max_length=30, null=True, blank=True)
     email = models.EmailField()
     type = models.CharField(max_length=30,
                             choices=TYPE_CHOICES,
                             default=F)
-    interested_topic = models.ManyToManyField(Topic)
+    interested_topic = models.ManyToManyField(Topic,null=True)
 
     def __str__(self):
         return str(self.first)
+
 
 
 class Vote(models.Model):
