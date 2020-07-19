@@ -1,6 +1,8 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from .utility import get_file_path
+
+User = get_user_model()
 
 
 class Topic(models.Model):
@@ -24,28 +26,27 @@ class Media(models.Model):
         return self.title
 
 
-class Subscriber(models.Model):
-    P = "PREMIUM"
-    F = "FREE"
-
-    TYPE_CHOICES = (
-        (P, "Premium"),
-        (F, "Free"),
-    )
-
-    first = models.CharField(max_length=30,null=False)
-    last = models.CharField(max_length=30, null=True, blank=True)
-    email = models.EmailField()
-    type = models.CharField(max_length=30,
-                            choices=TYPE_CHOICES,
-                            default=F)
-    interested_topic = models.ManyToManyField(Topic,null=True)
-
-    def __str__(self):
-        return str(self.first)
-
+# class Subscriber(models.Model):
+#     P = "PREMIUM"
+#     F = "FREE"
+#
+#     TYPE_CHOICES = (
+#         (P, "Premium"),
+#         (F, "Free"),
+#     )
+#
+#     first = models.CharField(max_length=30,null=False)
+#     last = models.CharField(max_length=30, null=True, blank=True)
+#     email = models.EmailField()
+#     type = models.CharField(max_length=30,
+#                             choices=TYPE_CHOICES,
+#                             default=F)
+#     interested_topic = models.ManyToManyField(Topic)
+#
+#     def __str__(self):
+#         return str(self.first)
 
 
 class Vote(models.Model):
-    voted_by = models.ForeignKey(Subscriber, on_delete=models.SET_NULL, null=True, blank=True)
+    voted_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     voted_for = models.ForeignKey(Media, on_delete=models.SET_NULL, null=True, blank=True)

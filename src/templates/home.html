@@ -94,6 +94,18 @@ a {
 
 {% block html1 %}
 
+{% block content %}
+{% if user.is_authenticated %}
+  Hi {{ user.username }}!
+  <p><a href="{% url 'logout' %}">logout</a></p>
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">login</a> |
+  <a href="{% url 'signup' %}">signup</a>
+{% endif %}
+{% endblock %}
+
+
 <h1 align="center">Index</h1>
 <p align="center">
 <table class="index-table">
