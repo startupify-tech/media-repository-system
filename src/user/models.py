@@ -1,7 +1,6 @@
 # users/models.py
 from __future__ import unicode_literals
 from django.db import models,transaction
-
 from django.utils import timezone
 from django.contrib.auth.models import (
     AbstractBaseUser, PermissionsMixin, BaseUserManager
@@ -52,13 +51,12 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     )
 
     email = models.EmailField(max_length=40, unique=True)
-    username = models.CharField(max_length=30,default='first')
-    first = models.CharField(max_length=30, default='first')
+    username = models.CharField(max_length=30,)
+    first = models.CharField(max_length=30, )
     first_name = models.CharField(max_length=30, blank=True)
     last_name = models.CharField(max_length=30, blank=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
-
     date_joined = models.DateTimeField(default=timezone.now)
     type = models.CharField(max_length=30,
                             choices=TYPE_CHOICES,

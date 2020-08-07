@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
+from user.serializers import UserSerializer
 from .models import Media,  Topic
 from .serializers import MediaSerializer, TopicSerializer
 from django.contrib.auth import get_user_model
@@ -41,6 +41,5 @@ class TopicView(APIView):
         topics = Topic.objects.all()
         serializer = TopicSerializer(topics, many=True)
         return Response(serializer.data)
-
 
 
