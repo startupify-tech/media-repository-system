@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from .utility import get_file_path
+from django.conf import settings
 
 
 # Create your models here.
@@ -15,7 +16,7 @@ class Topic(models.Model):
 class Media(models.Model):
     title = models.CharField(max_length=30, null=True)
     description = models.TextField(null=True)
-    file = models.FileField(upload_to=get_file_path, null=True, blank=True, max_length=255)
+    _file = models.FileField(upload_to=get_file_path, null=True, blank=True, max_length=255)
 
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     topic = models.ForeignKey(Topic, db_column="name", on_delete=models.SET_NULL, null=True, blank=True)
@@ -24,6 +25,10 @@ class Media(models.Model):
 
     def __str__(self):
         return self.title
+
+    @property
+    def file(self):
+        return (settings.DOMAIN_NAME + self._file.name)
 
 
 class Subscriber(models.Model):
@@ -50,3 +55,4 @@ class Subscriber(models.Model):
 class Vote(models.Model):
     voted_by = models.ForeignKey(Subscriber, on_delete=models.SET_NULL, null=True, blank=True)
     voted_for = models.ForeignKey(Media, on_delete=models.SET_NULL, null=True, blank=True)
+
