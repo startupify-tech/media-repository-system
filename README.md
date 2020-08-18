@@ -36,14 +36,14 @@ This project is a media repository platform for partnered domain experts. Partne
 |___admin.py
 |___apps.py
 |___views.py
-|___templates/      - HTML templates for views (Note: refer to template directory in src/)
-|______pages/             - main pages to be embedded in base layout
-|______partials/          - partial components
-|______base_layout.html   - basic page layout
+|___settings.py
+|___urls.py
+|___test.py
 |
 |_templates/    - stores templates used for views
 |___home.html   - homepage layout
 |___base.html   - Basic page layout to be extended by all templates
+|___album.html  - Layout for client page
 |
 |_media/        - protected storage for media loaded by domain expert (created automatically on upload)
 |_static/       - static file storage
