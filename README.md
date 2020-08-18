@@ -59,11 +59,17 @@ This project is a media repository platform for partnered domain experts. Partne
 
 Execute following command in project's root directory to run locally
 
-```shell
+```shell 1
 py -m venv env
 pip install -r requirements.txt
 .\env\Scripts\activate
-python manage.py runserver
+python manage.py runserver 8080
+```
+```shell 2
+py -m venv env
+pip install -r requirements.txt
+.\env\Scripts\activate
+python manage.py runserver 8000 --settings=demo.settings
 ```
 
 Now to login to admin interface visit http://localhost:8000/admin
